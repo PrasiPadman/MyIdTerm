@@ -1,2 +1,2 @@
-# MyIdTerm
+# MyMidTerm
 MyMidTerm2021
