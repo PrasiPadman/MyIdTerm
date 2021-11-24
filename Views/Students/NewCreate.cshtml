@@ -1,0 +1,73 @@
+﻿@model ExpITMidTerm.ViewModels.StudentViewModel
+@{
+    ViewBag.Title = "NewCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Student Register</h2>
+
+@using (Html.BeginForm("Create", "Students"))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Student.FirstName,htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(model => model.Student.FirstName, new {@class = "form-controll" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Student.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(model => model.Student.LastName, new { @class = "form-controll" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Student.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.DropDownListFor(model => model.Student.CourseId, new SelectList(Model.CourseList, "Id", "CourseName"), "Select Course", new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Student.CourseEnrolleddate, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(model => model.Student.CourseEnrolleddate, new { @class = "form-controll" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Student.CourseStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+        <%: @Html.DropDownListFor(model => model.Student.CourseStatus, Model.CourseStatus)%>
+        <select id="Coursestatus" name="Coursestatus">
+
+            <option value="1">In Progress</option>
+            <option value="2">Completed</option>
+           
+        </select>
+
+
+        @*(new List<SelectListItem>
+        {
+            new SelectListItem { Selected = true, Text = "In Progress", Value = "1"},
+            new SelectListItem { Selected = false, Text = "Completed", Value = "2" }
+        }),
+        "Select Course Status", new { htmlAttributes = new { @class = "form-control" } }
+        ))*@
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Student.Grade, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(model => model.Student.Grade, new { @class = "form-controll" })
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+  
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
